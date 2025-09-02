@@ -1,4 +1,3 @@
-// pages/api/upload.js (Cloudinary Version - Fixed)
 import { v2 as cloudinary } from 'cloudinary';
 import { IncomingForm } from 'formidable';
 import fs from 'fs';
@@ -10,7 +9,7 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// Disable Next.js body parser
+
 export const config = {
   api: {
     bodyParser: false,
@@ -23,7 +22,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Parse form data
+   
     const form = new IncomingForm();
     
     const data = await new Promise((resolve, reject) => {
@@ -33,10 +32,10 @@ export default async function handler(req, res) {
       });
     });
 
-    // Check if image file exists - handle different file structures
+   
     let filePath;
     if (data.files.image) {
-      // Handle both single file and array of files
+     
       const imageFile = Array.isArray(data.files.image) 
         ? data.files.image[0] 
         : data.files.image;
@@ -55,10 +54,10 @@ export default async function handler(req, res) {
       ]
     });
 
-    // Delete temporary file
+   
     fs.unlinkSync(filePath);
 
-    // Return Cloudinary URL
+    
     return res.status(200).json({
       message: 'File uploaded successfully',
       path: result.secure_url,
@@ -69,4 +68,5 @@ export default async function handler(req, res) {
     console.error('Upload error:', error);
     return res.status(500).json({ error: error.message || 'Upload failed' });
   }
+
 }
