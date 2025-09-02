@@ -1,0 +1,24 @@
+{
+  "name": "school-management-app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "vercel-build": "npm run build"
+  },
+  "dependencies": {
+    "cloudinary": "^2.7.0",
+    "formidable": "^3.5.4",
+    "mysql2": "^3.6.0",
+    "next": "13.4.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-hook-form": "^7.62.0"
+  },
+  "engines": {
+    "node": ">=18.x"
+  }
+}
