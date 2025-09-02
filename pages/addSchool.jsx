@@ -1,4 +1,3 @@
-// pages/addSchool.jsx
 import { useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -56,4 +55,5 @@ export default function AddSchoolPage() {
       `}</style>
     </div>
   );
+
 }
