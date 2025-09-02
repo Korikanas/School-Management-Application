@@ -1,9 +1,8 @@
-// components/AddSchoolForm.jsx
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 
-// Dynamically import react-hook-form with SSR disabled
+
 const ReactHookForm = dynamic(() => import('./ReactHookFormComponent'), {
   ssr: false,
   loading: () => (
@@ -32,4 +31,5 @@ const ReactHookForm = dynamic(() => import('./ReactHookFormComponent'), {
 
 export default function AddSchoolForm() {
   return <ReactHookForm />;
+
 }
