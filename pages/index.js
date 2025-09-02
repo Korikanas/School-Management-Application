@@ -6,7 +6,7 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    // Redirect to showSchools page on initial load
+   
     router.push('/showSchools');
   }, []);
 
@@ -35,4 +35,5 @@ export default function Home() {
       `}</style>
     </div>
   );
+
 }
