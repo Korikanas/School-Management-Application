@@ -1,6 +1,6 @@
 import connectDB, { closePool } from '../../lib/db';
 
-// Add CORS headers middleware
+
 function runMiddleware(req, res, fn) {
   return new Promise((resolve, reject) => {
     fn(req, res, (result) => {
@@ -12,7 +12,7 @@ function runMiddleware(req, res, fn) {
   });
 }
 
-// Simple CORS middleware
+
 function corsMiddleware(req, res, next) {
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -28,7 +28,7 @@ function corsMiddleware(req, res, next) {
 }
 
 export default async function handler(req, res) {
-  // Apply CORS middleware
+ 
   await runMiddleware(req, res, corsMiddleware);
 
   let db;
@@ -48,7 +48,7 @@ export default async function handler(req, res) {
       try {
         const { name, address, city, state, contact_number, image, email } = req.body;
 
-        // ✅ Validation
+      
         if (!name || !city || !state) {
           return res.status(400).json({ error: 'Missing required fields' });
         }
@@ -68,7 +68,7 @@ export default async function handler(req, res) {
       try {
         const { id, name, address, city, state, contact_number, image, email } = req.body;
 
-        // ✅ Validation
+    
         if (!id || !name || !city || !state) {
           return res.status(400).json({ error: 'Missing required fields' });
         }
@@ -120,11 +120,12 @@ export default async function handler(req, res) {
   }
 }
 
-// Disable body parsing for certain routes
+
 export const config = {
   api: {
     bodyParser: {
       sizeLimit: '4mb',
     },
   },
+
 };
