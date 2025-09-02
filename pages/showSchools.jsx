@@ -61,12 +61,12 @@ export default function ShowSchools() {
     try {
       const updateData = { ...formData };
       
-      // Only upload if it's a new image (data URL)
+ 
       if (updateData.image && updateData.image.startsWith('data:image')) {
         setImageUploading(true);
         
         try {
-          // Convert data URL to blob
+          
           const response = await fetch(updateData.image);
           const blob = await response.blob();
           
@@ -84,7 +84,7 @@ export default function ShowSchools() {
           }
           
           const uploadResult = await uploadResponse.json();
-          updateData.image = uploadResult.path; // Use path instead of URL for local storage
+          updateData.image = uploadResult.path; 
         } catch (uploadError) {
           setError('Image upload failed: ' + uploadError.message);
           setImageUploading(false);
@@ -102,7 +102,7 @@ export default function ShowSchools() {
       
       if (res.ok) {
         setEditing(null);
-        fetchSchools(); // Refresh the list
+        fetchSchools(); 
       } else {
         const errorData = await res.json();
         throw new Error(errorData.error || 'Failed to update school');
@@ -151,7 +151,7 @@ export default function ShowSchools() {
 
   const states = [...new Set(schools.map(school => school.state))].sort();
 
-  // Check for database connection errors
+ 
   if (error && error.includes('Database connection')) {
     return <DatabaseError />;
   }
@@ -1259,4 +1259,5 @@ export default function ShowSchools() {
       `}</style>
     </div>
   );
+
 }
