@@ -1,4 +1,3 @@
-// components/ReactHookFormComponent.jsx
 'use client';
 
 import { useState } from 'react';
@@ -21,7 +20,7 @@ export default function ReactHookFormComponent() {
     try {
       let imageUrl = '';
 
-      // Upload image if selected
+      
       if (imageFile) {
         const formData = new FormData();
         formData.append('image', imageFile);
@@ -40,7 +39,6 @@ export default function ReactHookFormComponent() {
         imageUrl = uploadResult.path;
       }
 
-      // Submit school data
       const response = await fetch('/api/schools', {
         method: 'POST',
         headers: {
@@ -76,7 +74,7 @@ export default function ReactHookFormComponent() {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      // Validate file type and size
+   
       if (!file.type.match('image.*')) {
         setMessage('Error: Please select an image file');
         return;
@@ -90,7 +88,7 @@ export default function ReactHookFormComponent() {
       setImageFile(file);
       setMessage('');
       
-      // Create image preview
+
       const reader = new FileReader();
       reader.onloadend = () => {
         setImagePreview(reader.result);
@@ -459,4 +457,5 @@ export default function ReactHookFormComponent() {
       `}</style>
     </>
   );
+
 }
